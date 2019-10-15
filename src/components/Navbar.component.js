@@ -5,7 +5,7 @@ export default function Navbar() {
   const [showMenu, setShowMenu] = useState(false);
 
   return (
-    <nav className="navbar navbar-expand-md navbar-light bg-light shadow">
+    <nav className="navbar navbar-expand-md navbar-light bg-light">
       <Link to="" className="navbar-brand h1">
         Exercise Tracker
       </Link>
@@ -24,10 +24,12 @@ export default function Navbar() {
       </button>
 
       <div
-        className={`collapse navbar-collapse ${showMenu ? 'show' : ''}`}
+        className={`collapse navbar-collapse ${
+          showMenu ? 'show text-center' : ''
+        }`}
         id="menu"
       >
-        <ul className="navbar-nav text-center">
+        <ul className="navbar-nav ml-auto">
           <li className="navbar-item">
             <Link to="/" className="nav-link">
               Exercises
