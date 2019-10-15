@@ -17,4 +17,4 @@ router.route('/add').post((req, res) => {
         .catch(err => res.status(400).json('Error (adding new user): ' + err));
 });
 
-module.exports = router
+module.exports = router 
