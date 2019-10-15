@@ -5,7 +5,7 @@ export default function Navbar() {
   const [showMenu, setShowMenu] = useState(false);
 
   return (
-    <nav className="navbar navbar-expand-md navbar-light bg-light">
+    <nav className="navbar navbar-expand-md navbar-light bg-light shadow-sm">
       <Link to="" className="navbar-brand h1">
         Exercise Tracker!
       </Link>
