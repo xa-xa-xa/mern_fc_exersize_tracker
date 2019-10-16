@@ -10,19 +10,21 @@ const port = process.env.PORT || 5000;
 app.use(cors());
 app.use(express.json());
 
-// mongoose.connect(process.env.ATLAS_URI, {
-//         useUnifiedTopology: true,
-//         useNewUrlParser: true,
-//         useCreateIndex: true
-//     })
-//     .catch(e => console.error("ERROR: ", e.message));
 mongoose
-  .connect(process.env.MONGODB_URI, {
+  .connect(process.env.ATLAS_URI, {
     useUnifiedTopology: true,
     useNewUrlParser: true,
     useCreateIndex: true
   })
   .catch(e => console.error('ERROR: ', e.message));
+
+// mongoose
+//   .connect(process.env.MONGODB_URI, {
+//     useUnifiedTopology: true,
+//     useNewUrlParser: true,
+//     useCreateIndex: true
+//   })
+//   .catch(e => console.error('ERROR: ', e.message));
 
 const connection = mongoose.connection;
 connection.once('open', () =>
