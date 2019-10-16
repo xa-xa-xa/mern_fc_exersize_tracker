@@ -2,7 +2,7 @@
 
 ## (Frontend: React+Bootstrap+Axios, Backend: Node, Express, MongoBD)
 
-Simple Exercises Logger:
+
 <br />
 run project:<br />
 Frontend on http://localhost:3000
