@@ -9,16 +9,23 @@ import CreateUser from './components/CreateUser.component';
 import EditExercise from './components/EditExercise.component';
 import ExerciseList from './components/ExercisesList.component';
 
+const styles = {
+  background: {
+    background: 'radial-gradient( yellow, #f06d06)',
+    position: 'relative'
+    // top: '4rem'
+  }
+};
+
 function App() {
   return (
-    <div className="bg-info vh-100 vw-100">
+    <div className="">
       <Router>
-        {' '}
         <Navbar />
-        <div className="container">
+        <div className="vh-100 w-100 px-4" style={styles.background}>
           <br />
           <div className="card shadow-sm">
-            <div class="card-body">
+            <div className="card-body">
               <Route path="/" exact component={ExerciseList} />
               <Route path="/edit/:id" component={EditExercise} />
               <Route path="/create" component={CreateExercise} />

@@ -1,15 +1,15 @@
-import React, { Component } from 'react'
-import DatePicker from 'react-datepicker'
-import 'react-datepicker/dist/react-datepicker.css'
-import Axios from 'axios'
+import React, { Component } from 'react';
+import DatePicker from 'react-datepicker';
+import 'react-datepicker/dist/react-datepicker.css';
+import Axios from 'axios';
 
 export default class CreateExercise extends Component {
   constructor(props) {
     super(props);
 
     this.onChangeFormField = this.onChangeFormField.bind(this);
-     this.onChangeDate = this.onChangeDate.bind(this);
-     this.onChangeDuration = this.onChangeDuration.bind(this);
+    this.onChangeDate = this.onChangeDate.bind(this);
+    this.onChangeDuration = this.onChangeDuration.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
 
     this.state = {
@@ -23,25 +23,24 @@ export default class CreateExercise extends Component {
 
   componentDidMount() {
     Axios.get('http://localhost:5000/users/').then(res => {
-      if(res.data.length > 0) {
+      if (res.data.length > 0) {
         this.setState({
           users: res.data.map(user => user.username),
           username: res.data[0].username
-        })
+        });
       }
-    })
+    });
   }
 
-
-    onChangeFormField(e) {
-      const name = e.target.name;
+  onChangeFormField(e) {
+    const name = e.target.name;
     this.setState({
       [name]: e.target.value
-    });   
+    });
   }
 
-  onChangeDuration(e){
-    this.setState({duration: e.target.value})
+  onChangeDuration(e) {
+    this.setState({ duration: e.target.value });
   }
 
   onChangeDate(date) {
@@ -59,8 +58,9 @@ export default class CreateExercise extends Component {
       date: this.state.date
     };
     console.log('exercise: ', exercise);
-    Axios.post('http://localhost:5000/exercises/add', exercise)
-    .then(res=>console.log(res.data))
+    Axios.post('http://localhost:5000/exercises/add', exercise).then(res =>
+      console.log(res.data)
+    );
 
     window.location = '/';
   }
@@ -111,7 +111,7 @@ export default class CreateExercise extends Component {
               onChange={this.onChangeDuration}
             />
           </div>
-    
+
           <div className="form-group">
             <label>Date:</label>
             <div>
@@ -126,11 +126,11 @@ export default class CreateExercise extends Component {
             <input
               type="submit"
               value="Create Exercise Log"
-              className="btn btn-primary"
+              className="btn btn-danger text-warning btn-lg btn-block"
             />
           </div>
         </form>
       </div>
-    )
+    );
   }
 }

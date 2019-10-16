@@ -5,10 +5,10 @@ import { ReactComponent as EditSVG } from '../icons/svg/edit-solid.svg';
 import { ReactComponent as TrashSVG } from '../icons/svg/trash-alt-regular.svg';
 
 const Exercise = props => {
-  const iconsStyles = {
+  const styles = {
     icons: {
       height: '1rem',
-      cursor: 'pointer',
+      // cursor: 'pointer',
       margin: '0 .5rem'
     },
     trashCan: {
@@ -16,6 +16,9 @@ const Exercise = props => {
       ':hover': {
         color: 'blue'
       }
+    },
+    edit: {
+      color: 'black'
     }
   };
 
@@ -23,20 +26,20 @@ const Exercise = props => {
     <tr className="text-center">
       <td>{props.exercise.username}</td>
       <td>{props.exercise.description}</td>
-      <td> {props.exercise.duration}</td>
+      <td> {props.exercise.duration} min</td>
       <td>{props.exercise.date.substring(0, 10)}</td>
       <td>
-        <Link to={`/edit/${props.exercise._id}`}>
-          <EditSVG style={iconsStyles.icons} />
+        <Link to={`/edit/${props.exercise._id}`} className="text-warning">
+          <EditSVG style={styles.icons} />
         </Link>{' '}
-        <>
+        <Link to="" className="text-danger">
           <TrashSVG
-            style={{ ...iconsStyles.trashCan, ...iconsStyles.icons }}
+            style={styles.icons}
             onClick={() => {
               props.deleteExercise(props.exercise._id);
             }}
           />
-        </>
+        </Link>
       </td>
     </tr>
   );
@@ -88,7 +91,7 @@ export default class ExerciseList extends Component {
               <th>Description</th>
               <th>Duration</th>
               <th>Date</th>
-              <th>Action</th>
+              <th>Actions</th>
             </tr>
           </thead>
           <tbody>{this.exercisesList()}</tbody>

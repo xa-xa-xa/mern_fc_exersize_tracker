@@ -4,12 +4,12 @@ import Axios from 'axios';
 export default class CreateUser extends Component {
   constructor(props) {
     super(props);
-
     this.onChangeUsername = this.onChangeUsername.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
 
     this.state = {
-      username: ''
+      username: '',
+      submitted: false
     };
   }
 
@@ -24,21 +24,26 @@ export default class CreateUser extends Component {
     const user = {
       username: this.state.username
     };
-    console.log('user: ', user);
 
-    Axios.post('http://localhost:5000/users/add', user).then(res =>
-      console.log(res.data)
-    );
-
-    this.setState({
-      username: ''
-    }); 
+    Axios.post('http://localhost:5000/users/add', user)
+      .then(res => {
+        console.log(res.data);
+        this.setState({ username: '', submitted: true });
+      })
+      .catch(err => console.error(err));
   }
 
   render() {
     return (
       <div>
-        <h3>Create New User</h3>
+        <h3>
+          Create New User{' '}
+          {this.state.submitted ? (
+            <span className="text-success">: user been created</span>
+          ) : (
+            ''
+          )}
+        </h3>
         <form onSubmit={this.onSubmit}>
           <div className="form-group">
             <label>Username:</label>
@@ -54,7 +59,7 @@ export default class CreateUser extends Component {
             <input
               type="submit"
               value="Create User"
-              className="btn btn-primary"
+              className="btn btn-danger text-warning btn-lg btn-block"
             />
           </div>
         </form>

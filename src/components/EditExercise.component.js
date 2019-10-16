@@ -139,7 +139,7 @@ export default class EditExercise extends Component {
             <input
               type="submit"
               value="Edit Exercise Log"
-              className="btn btn-primary"
+              className="btn btn-danger text-warning btn-lg btn-block"
             />
           </div>
         </form>
