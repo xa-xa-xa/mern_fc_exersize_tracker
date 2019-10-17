@@ -11,7 +11,7 @@ app.use(cors());
 app.use(express.json());
 
 mongoose
-  .connect(process.env.ATLAS_URI, {
+  .connect(process.env.URI, {
     useUnifiedTopology: true,
     useNewUrlParser: true,
     useCreateIndex: true
