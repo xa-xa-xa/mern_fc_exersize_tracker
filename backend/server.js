@@ -18,7 +18,8 @@ mongoose
       useUnifiedTopology: true,
       useNewUrlParser: true,
       useCreateIndex: true
-    }
+    },
+    console.log('connected!')
   )
   .catch(e => console.error('ERROR: ', e.message));
 
@@ -29,7 +30,7 @@ mongoose
 //     useCreateIndex: true
 //   })
 //   .catch(e => console.error('ERROR: ', e.message));
-
+mongoose.set('debug', true);
 const connection = mongoose.connection;
 connection.once('open', () =>
   console.log('\n*** MongoDB database connection established successfully.')
