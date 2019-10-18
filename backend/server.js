@@ -11,11 +11,15 @@ app.use(cors());
 app.use(express.json());
 
 mongoose
-  .connect(process.env.URI, {
-    useUnifiedTopology: true,
-    useNewUrlParser: true,
-    useCreateIndex: true
-  })
+  .connect(
+    process.env.ATLAS_URI ||
+      'mongodb://sasha:Sasha123@ds235658.mlab.com:35658/heroku_8g6wl22h',
+    {
+      useUnifiedTopology: true,
+      useNewUrlParser: true,
+      useCreateIndex: true
+    }
+  )
   .catch(e => console.error('ERROR: ', e.message));
 
 // mongoose
