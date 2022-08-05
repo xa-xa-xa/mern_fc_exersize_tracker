@@ -12,7 +12,7 @@
     "eslint-plugin-node": "^10.0.0",
     "eslint-plugin-prettier": "^3.1.1",
     "express": "^4.17.1",
-    "mongoose": "^5.7.3",
+    "mongoose": "^5.7.5",
     "prettier": "^1.18.2",
     "react": "^16.10.2",
     "react-datepicker": "^2.9.6",
